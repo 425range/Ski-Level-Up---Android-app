@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="메인" />
+
+    <item
+        android:id="@+id/navigation_skill_list"
+        android:icon="@drawable/baseline_downhill_skiing_24"
+        android:title="기술 보기" />
+
+    <item
+        android:id="@+id/navigation_notifications"
+        android:icon="@drawable/baseline_local_police_24"
+        android:title="레벨 등급" />
+
+</menu>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.example.skilevelup.ui.home.HomeFragment"
+        android:label="메인"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_dashboard"
+        android:name="com.example.skilevelup.ui.skill_list.SkillListFragment"
+        android:label="기술 열람"
+        tools:layout="@layout/fragment_skill_list">
+
+        <action
+            android:id="@+id/action_skillList_to_skillDetail"
+            app:destination="@+id/navigation_skill_detail" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_skill_detail"
+        android:name="com.example.skilevelup.ui.skill.SkillDetailFragment"
+        android:label="기술 상세"
+        tools:layout="@layout/fragment_skill_detail"
+
+    <fragment
+        android:id="@+id/navigation_notifications"
+        android:name="com.example.skilevelup.ui.level.LevelFragment"
+        android:label="레벨별 점수 확인"
+        tools:layout="@layout/fragment_level" />
+</navigation>
