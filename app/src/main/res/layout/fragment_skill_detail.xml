@@ -61,6 +61,27 @@
                 android:layout_marginEnd="15sp"
                 android:text="스노우플라우는 감속이 주목적이며, 양쪽 스키의 탑 간격을 일정하게 유지하고 무게중심을
 정확히 이동시킬 때 평가점수가 높아집니다. 대한스키지도자연맹에서는 이 기술을 레벨1 자격증 기본기술로 활용하고 있습니다."/>
+            <View
+                android:layout_width="380sp"
+                android:layout_gravity="center"
+                android:layout_height="1dp"
+                android:background="#CCCCCC"
+                android:layout_marginVertical="5dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:text="[난이도]"
+                android:textSize="18sp"
+                />
+            <RatingBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:numStars="5"
+                android:rating="0.5"
+                android:stepSize="0.5"/>
 
             <ToggleButton
                 android:id="@+id/btn_done"
