@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <ScrollView
+        android:id="@+id/scroll_detail"
         android:fillViewport="true"
         android:scrollbars="none"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="MissingConstraints"
         >
         <LinearLayout
@@ -24,7 +30,7 @@
                 android:text="SnowPlow"
                 android:textSize="40sp" />
             <View
-                android:layout_width="380sp"
+                android:layout_width="match_parent"
                 android:layout_gravity="center"
                 android:layout_height="1dp"
                 android:background="#CCCCCC"
@@ -53,6 +59,7 @@
                 android:text="연습 포인트"
                 android:textSize="18sp"/>
             <TextView
+                android:id="@+id/tv_prac"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
@@ -62,7 +69,7 @@
                 android:text="스노우플라우는 감속이 주목적이며, 양쪽 스키의 탑 간격을 일정하게 유지하고 무게중심을
 정확히 이동시킬 때 평가점수가 높아집니다. 대한스키지도자연맹에서는 이 기술을 레벨1 자격증 기본기술로 활용하고 있습니다."/>
             <View
-                android:layout_width="380sp"
+                android:layout_width="match_parent"
                 android:layout_gravity="center"
                 android:layout_height="1dp"
                 android:background="#CCCCCC"
@@ -76,6 +83,7 @@
                 android:textSize="18sp"
                 />
             <RatingBar
+                android:id="@+id/ratingBar_difficulty"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -83,7 +91,7 @@
                 android:rating="0.5"
                 android:stepSize="0.5"/>
 
-            <ToggleButton
+            <Button
                 android:id="@+id/btn_done"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

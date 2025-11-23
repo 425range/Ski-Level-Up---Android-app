@@ -4,14 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import com.example.skilevelup.R
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.skilevelup.databinding.FragmentDashboardBinding
+import androidx.navigation.fragment.findNavController
+import com.example.skilevelup.databinding.FragmentSkillListBinding
 
 class SkillListFragment : Fragment() {
 
-    private var _binding: FragmentDashboardBinding? = null
+    private var _binding: FragmentSkillListBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -25,14 +27,31 @@ class SkillListFragment : Fragment() {
         val skillListViewModel =
             ViewModelProvider(this).get(SkillListViewModel::class.java)
 
-        _binding = FragmentDashboardBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        _binding = FragmentSkillListBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-        val textView: TextView = binding.textDashboard
-        skillListViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.btSnowplow.setOnClickListener {
+            openSkillDetail("SnowPlow")
         }
-        return root
+        binding.btSnowplowTurn.setOnClickListener {
+            openSkillDetail("SnowPlowTurn")
+        }
+        binding.btStemTurn.setOnClickListener {
+            openSkillDetail("StemTurn")
+        }
+
+
+    }
+    private fun openSkillDetail(skillName: String) {
+        val bundle = bundleOf("skillName" to skillName)
+        findNavController().navigate(
+            R.id.action_skillList_to_skillDetail,
+            bundle
+        )
     }
 
     override fun onDestroyView() {
