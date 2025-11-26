@@ -34,7 +34,7 @@
             android:id="@+id/tv_score"
             android:layout_margin="20sp"
             android:textColor="@color/black"
-            android:text="점수: 142"
+            android:text="Score: 142"
             android:textStyle="bold"
             android:fontFamily="@font/bmjua"
             android:textSize="50sp"
