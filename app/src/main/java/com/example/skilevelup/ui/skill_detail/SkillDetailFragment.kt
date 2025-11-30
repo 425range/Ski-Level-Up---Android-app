@@ -9,8 +9,6 @@ import com.example.skilevelup.databinding.FragmentSkillDetailBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.example.skilevelup.data.db.AppDatabase
-import com.example.skilevelup.util.ScoreManager
-import com.google.android.material.color.utilities.Score
 import kotlinx.coroutines.launch
 
 
@@ -18,7 +16,6 @@ class SkillDetailFragment : Fragment() {
     private var _binding : FragmentSkillDetailBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var scoreManager: ScoreManager
     private var skillName: String = "" // Default value
 
     override fun onCreateView(
@@ -33,9 +30,7 @@ class SkillDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstance: Bundle?){
         super.onViewCreated(view, savedInstance)
 
-        scoreManager = ScoreManager(requireContext())
-
-        val skillName = arguments?.getString("skillName") ?: return
+        skillName = arguments?.getString("skillName") ?: return
 
         val db = AppDatabase.get(requireContext())
 
@@ -54,6 +49,9 @@ class SkillDetailFragment : Fragment() {
             binding.tvDesc.text = skill.desc
             binding.tvPrac.text = skill.practice
             binding.ratingBarDifficulty.rating = skill.difficulty
+
+            val done = db.practiceDao().isDone(skillName) ?: false
+            if (done) setDoneButtonUI()
         }
 
         // 연습 완료 버튼 처리
@@ -96,6 +94,15 @@ class SkillDetailFragment : Fragment() {
             }
         }
     }
+
+    private fun setDoneButtonUI() {
+        binding.btnDone.text = "완료됨"
+        binding.btnDone.setBackgroundTintList(
+            resources.getColorStateList(com.example.skilevelup.R.color.btn_done, null)
+        )
+        binding.btnDone.isEnabled = false
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

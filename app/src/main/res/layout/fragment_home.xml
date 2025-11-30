@@ -16,7 +16,27 @@
             android:layout_width="100sp"
             android:layout_height="100sp"
             android:src="@drawable/bronze"/>
-
+        <ProgressBar
+            android:id="@+id/progress_level"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="260dp"
+            android:layout_height="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:max="100"
+            android:progress="0"
+            android:progressTint="@color/black"
+            android:backgroundTint="#DDDDDD" />
+        <TextView
+            android:id="@+id/tv_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="다음 레벨까지 0점"
+            android:textColor="@color/black"
+            android:fontFamily="@font/bmjua"
+            android:textSize="22sp"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"/>
         <TextView
             android:id="@+id/tv_level"
             android:layout_margin="20sp"

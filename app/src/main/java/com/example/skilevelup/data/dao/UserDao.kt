@@ -12,6 +12,9 @@ interface UserDao {
     @Query("SELECT totalScore FROM user WHERE uid = 0")
     suspend fun getScore(): Int?
 
+    @Query("UPDATE user SET totalScore = 0 WHERE uid = 0")
+    suspend fun resetScore()
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun saveUser(user: UserEntity)
 }

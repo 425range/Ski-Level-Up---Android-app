@@ -7,7 +7,7 @@
     <ScrollView
         android:fillViewport="true"
         android:scrollbars="none"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:ignore="MissingConstraints">
 
@@ -180,7 +180,19 @@
                 android:fontFamily="@font/bmjua"
                 android:textStyle="bold"
                 android:textSize="18sp"/>
-
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="30dp"/>
+            <Button
+                android:id="@+id/btn_reset"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="점수 초기화"
+                android:fontFamily="@font/bmjua"
+                android:layout_gravity="center"
+                android:textSize="16sp"
+                android:backgroundTint="#FF0000"
+                android:textColor="@android:color/white"/>
         </LinearLayout>
 
     </ScrollView>

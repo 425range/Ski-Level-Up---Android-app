@@ -4,17 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.skilevelup.R
 import com.example.skilevelup.data.db.AppDatabase
 import com.example.skilevelup.databinding.FragmentHomeBinding
-import com.example.skilevelup.util.ScoreManager
-import com.google.android.material.color.utilities.Score
 import kotlinx.coroutines.launch
-
 
 class HomeFragment : Fragment() {
 
@@ -23,7 +19,6 @@ class HomeFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
-    private lateinit var scoreManager: ScoreManager
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,7 +35,6 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view : View, savedState: Bundle?) {
         super.onViewCreated(view, savedState)
 
-        scoreManager = ScoreManager(requireContext())
     }
 
     override fun onResume() {
@@ -57,20 +51,36 @@ class HomeFragment : Fragment() {
     private fun updateLevelUI(score: Int) {
         binding.tvScore.text = "점수: $score"
 
-        val (levelName, imageRes) = when{
-            score < 200 -> "Bronze" to R.drawable.bronze
-            score < 300 -> "Silver" to R.drawable.silver
-            score < 400 -> "Gold" to R.drawable.gold
-            score < 500 -> "Platinum" to R.drawable.platinum
-            score < 600 -> "Diamond" to R.drawable.diamond
-            score < 700 -> "Master" to R.drawable.master
-            score < 800 -> "Grand Master" to R.drawable.grandmaster
-            score > 800 -> "Professional" to R.drawable.professional
-            else -> "None" to R.drawable.bronze
+        val (levelName, imageRes, start, end) = when {
+            score < 200 -> Quad("Bronze", R.drawable.bronze, 0, 200)
+            score < 300 -> Quad("Silver", R.drawable.silver, 200, 300)
+            score < 400 -> Quad("Gold", R.drawable.gold, 300, 400)
+            score < 500 -> Quad("Platinum", R.drawable.platinum, 400, 500)
+            score < 600 -> Quad("Diamond", R.drawable.diamond, 500, 600)
+            score < 700 -> Quad("Master", R.drawable.master, 600, 700)
+            score < 800 -> Quad("Grand Master", R.drawable.grandmaster, 700, 800)
+            else -> Quad("Professional", R.drawable.professional, 800, 800)
         }
+
         binding.tvLevel.text = "Level : $levelName"
         binding.ivLevel.setImageResource(imageRes)
+
+        if (end > start) {
+            val percent = ((score - start) * 100) / (end - start)
+            binding.progressLevel.progress = percent
+            val remain = end - score
+            binding.tvNext.text = "다음 레벨까지 ${remain}점"
+        } else {
+            binding.progressLevel.progress = 100
+            binding.tvNext.text = "최고 레벨입니다!"
+        }
     }
+    data class Quad<T1, T2, T3, T4>(
+        val first: T1,
+        val second: T2,
+        val third: T3,
+        val fourth: T4
+    )
 
     override fun onDestroyView() {
         super.onDestroyView()

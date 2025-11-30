@@ -12,6 +12,9 @@ interface PracticeDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun setDone(practice: PracticeEntity)
 
+    @Query("UPDATE practice SET done = 0")
+    suspend fun resetAllPractice()
+
     @Query("SELECT done FROM practice WHERE skillName = :name")
     suspend fun isDone(name: String): Boolean?
 
