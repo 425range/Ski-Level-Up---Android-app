@@ -43,8 +43,33 @@ class SkillListFragment : Fragment() {
         binding.btStemTurn.setOnClickListener {
             openSkillDetail("StemTurn")
         }
-
-
+        binding.btParallelLong.setOnClickListener {
+            openSkillDetail("ParallelLongTurn")
+        }
+        binding.btParallelShort.setOnClickListener {
+            openSkillDetail("ParallelShortTurn")
+        }
+        binding.btDynamicLong.setOnClickListener {
+            openSkillDetail("DynamicLongTurn")
+        }
+        binding.btDynamicShort.setOnClickListener {
+            openSkillDetail("DynamicShortTurn")
+        }
+        binding.btCarvingLong.setOnClickListener {
+            openSkillDetail("CarvingLongTurn")
+        }
+        binding.btCarvingShort.setOnClickListener {
+            openSkillDetail("CarvingShortTurn")
+        }
+        binding.btCombinedDownhill.setOnClickListener {
+            openSkillDetail("CombinedDownhill")
+        }
+        binding.btSlalomRacing.setOnClickListener {
+            openSkillDetail("SlalomRacing")
+        }
+        binding.btGiantSlalomRacing.setOnClickListener {
+            openSkillDetail("GiantSlalomRacing")
+        }
     }
     private fun openSkillDetail(skillName: String) {
         val bundle = bundleOf("skillName" to skillName)

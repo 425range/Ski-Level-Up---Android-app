@@ -27,7 +27,7 @@
                 android:padding="20sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="SnowPlow"
+                android:text="@string/snowplow"
                 android:textSize="40sp" />
             <View
                 android:layout_width="match_parent"
@@ -41,11 +41,7 @@
                 android:padding="10sp"
                 android:layout_marginStart="15sp"
                 android:layout_marginEnd="15sp"
-                android:text="대한스키지도자연맹에서 정의하는 스노우플라우는 스키의 앞부분(tip)을
-'A'자 모양으로 만들어 양 스키에 압력을 분산시켜 속도를 줄이고, 안정성을 확보하며 회전을
-유도하는 가장 초급 기술입니다. 바깥발(계곡쪽)에 체중을 두고 다운모션으로 시작하여, 대각선방향(사활강)으로
-이동하며 몸의 수직운동(버티컬 무브먼트)이 함께 일어납니다. 폴라인(최대경사선)에 진입하면, 피보팅(발 앞쪽을 안쪽으로 돌림)
-동작과 함께 바깥쪽 스키에 더 많은 체중을 실어 턴을 만듭니다."
+                android:text="err"
                 android:textSize="18sp"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
@@ -66,8 +62,7 @@
                 android:padding="10sp"
                 android:layout_marginStart="15sp"
                 android:layout_marginEnd="15sp"
-                android:text="스노우플라우는 감속이 주목적이며, 양쪽 스키의 탑 간격을 일정하게 유지하고 무게중심을
-정확히 이동시킬 때 평가점수가 높아집니다. 대한스키지도자연맹에서는 이 기술을 레벨1 자격증 기본기술로 활용하고 있습니다."/>
+                android:text="Practice point"/>
             <View
                 android:layout_width="match_parent"
                 android:layout_gravity="center"
@@ -97,14 +92,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:backgroundTint="@color/black"
+                android:fontFamily="@font/bmjua"
                 android:padding="20sp"
                 android:text="연습 완료?"
-                android:fontFamily="@font/bmjua"
-                android:textSize="18sp"
-                android:backgroundTint="@color/black"
                 android:textColor="@color/white"
                 android:textOn="연습 완료!"
-                />
+                android:textSize="18sp" />
         </LinearLayout>
     </ScrollView>
 

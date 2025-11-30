@@ -7,10 +7,13 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.example.skilevelup.R
+import com.example.skilevelup.data.db.AppDatabase
 import com.example.skilevelup.databinding.FragmentHomeBinding
 import com.example.skilevelup.util.ScoreManager
 import com.google.android.material.color.utilities.Score
+import kotlinx.coroutines.launch
 
 
 class HomeFragment : Fragment() {
@@ -43,8 +46,12 @@ class HomeFragment : Fragment() {
     override fun onResume() {
         super.onResume()
 
-        val currentScore = scoreManager.getTotalScore()
-        updateLevelUI(currentScore)
+        lifecycleScope.launch {
+            val db = AppDatabase.get(requireContext())
+            val score = db.userDao().getScore() ?: 0
+            updateLevelUI(score)
+        }
+
     }
 
     private fun updateLevelUI(score: Int) {
