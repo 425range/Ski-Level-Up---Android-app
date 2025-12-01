@@ -56,6 +56,7 @@ class SkillDetailFragment : Fragment() {
 
         // 연습 완료 버튼 처리
         binding.btnDone.setOnClickListener {
+            setDoneButtonUI()
 
             lifecycleScope.launch {
 
@@ -76,6 +77,7 @@ class SkillDetailFragment : Fragment() {
                         )
                     )
                 }
+                if(done) setDoneButtonUI()
 
                 db.practiceDao().setDone(
                     com.example.skilevelup.data.entity.PracticeEntity(
@@ -90,7 +92,6 @@ class SkillDetailFragment : Fragment() {
                     Toast.LENGTH_SHORT
                 ).show()
 
-                binding.btnDone.isEnabled = false
             }
         }
     }

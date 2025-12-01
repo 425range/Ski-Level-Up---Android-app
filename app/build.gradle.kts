@@ -60,4 +60,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
     implementation("androidx.room:room-ktx:2.6.1")
 
+    // Google Map
+    implementation("com.google.android.gms:play-services-maps:18.2.0")
+
 }

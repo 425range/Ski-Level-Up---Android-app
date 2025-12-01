@@ -34,4 +34,11 @@
         android:name="com.example.skilevelup.ui.level.LevelFragment"
         android:label="레벨별 점수 확인"
         tools:layout="@layout/fragment_level" />
+
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="com.example.skilevelup.ui.map.MapFragment"
+        android:label="스키장 지도"
+        tools:layout="@layout/fragment_map" />
+
 </navigation>

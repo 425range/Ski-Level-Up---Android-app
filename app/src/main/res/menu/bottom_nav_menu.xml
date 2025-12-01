@@ -15,5 +15,9 @@
         android:id="@+id/levelFragment"
         android:icon="@drawable/baseline_local_police_24"
         android:title="레벨 등급" />
+    <item
+        android:id="@+id/mapFragment"
+        android:icon="@drawable/baseline_map_24"
+        android:title="스키장" />
 
 </menu>

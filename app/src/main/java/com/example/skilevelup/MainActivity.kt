@@ -33,7 +33,8 @@ class MainActivity : AppCompatActivity() {
             setOf(
                 R.id.homeFragment,
                 R.id.skillListFragment,
-                R.id.levelFragment
+                R.id.levelFragment,
+                R.id.mapFragment
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -41,7 +42,7 @@ class MainActivity : AppCompatActivity() {
 
         lifecycleScope.launch {
             val db = AppDatabase.get(this@MainActivity)
-
+            // Put data of skill list on DataBase
             val skills = listOf(
                 SkillEntity(
                     name = "SnowPlow",
@@ -231,9 +232,9 @@ class MainActivity : AppCompatActivity() {
                     score=450
                 )
             )
+            db.skillDao().insertAll(skills) // insert skills to DB
 
-            db.skillDao().insertAll(skills)
-
+            // Show score
             if (db.userDao().getScore() == null) {
                 db.userDao().saveUser(UserEntity(totalScore = 0))
             }
